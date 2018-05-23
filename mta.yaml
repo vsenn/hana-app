@@ -10,7 +10,7 @@ modules:
       - name: core_xsjs_api
         group: destinations
         properties:
-          name: core-xsjs-backend
+          name: core-backend
           url: '~{url}'
           forwardAuthToken: true
   - name: db
