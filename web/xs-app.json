@@ -10,5 +10,9 @@
 		"source": "(.*)(.xsodata)",
 		"destination": "core-xsjs-backend",
 		"authenticationType": "xsuaa"
+	}, {
+		"source" : "/(.*)",
+		"localDir" : "resources",
+		"authenticationType" : "xsuaa"
 	}]
 }
