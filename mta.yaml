@@ -15,7 +15,7 @@ modules:
           forwardAuthToken: true
       - name: ui5
         properties:
-          url: '~{url}'          
+          url: '~{url}'
   - name: db
     type: hdb
     path: db
