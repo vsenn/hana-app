@@ -4,7 +4,7 @@
 
 var conn = $.hdb.getConnection();
 var query = "SELECT FROM PurchaseOrder.Item { " +
-	        " POHeader.PURCHASEORDERID as \"PurchaseOrderItemId\", " +
+	        " HEADER.PURCHASEORDERID as \"PurchaseOrderItemId\", " +
             " PRODUCT as \"ProductID\", " +
             " GROSSAMOUNT as \"Amount\" " +
             " } ";

@@ -13,9 +13,6 @@ modules:
           name: core-xsjs-backend
           url: '~{url}'
           forwardAuthToken: true
-      - name: ui5
-        properties:
-          url: '~{url}'
   - name: db
     type: hdb
     path: db
@@ -47,5 +44,5 @@ resources:
   - name: ui5
     type: org.cloudfoundry.managed-service
     parameters:
-      service : sapui5_sb
-      service-plan : sapui5-1.52
+      service: sapui5_sb
+      service-plan: sapui5-1.52
