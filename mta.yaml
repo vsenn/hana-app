@@ -41,7 +41,7 @@ resources:
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
-  - name: ui5
+  - name: ui5-service
     type: org.cloudfoundry.managed-service
     parameters:
       service: sapui5_sb
