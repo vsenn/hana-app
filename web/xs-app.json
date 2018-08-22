@@ -9,10 +9,19 @@
 	}, {
 		"source": "(.*)(.xsodata)",
 		"destination": "core-xsjs-backend",
+		"csrfProtection": false,
 		"authenticationType": "xsuaa"
 	}, {
 		"source" : "/(.*)",
 		"localDir" : "resources",
-		"authenticationType" : "xsuaa"
+		"authenticationType" : "xsuaa",
+		"replace": {
+			"pathSuffixes": ["index.html", "odataTest.html"],
+			"services": {
+				"sapui5_sb": {
+					"tag": "ui5"
+				}
+			}		
+		}		
 	}]
 }
