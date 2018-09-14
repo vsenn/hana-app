@@ -1,6 +1,6 @@
 ID: hana-app
 _schema-version: '2.0'
-version: 0.0.1
+version: 0.1.0
 modules:
   - name: web
     type: html5
