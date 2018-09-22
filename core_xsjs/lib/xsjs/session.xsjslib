@@ -2,13 +2,23 @@
 @function Outputs the Session user and Language as JSON in the Response body
 */
 function fillSessionInfo(){
-	var body = '';
+	var body = "";
 	body = JSON.stringify({
 		"session" : [{"UserName": $.session.getUsername(), "Language": $.session.language}]
 	});
-	$.response.contentType = 'application/json';
+	$.response.contentType = "application/json";
 	$.response.setBody(body);
 	$.response.status = $.net.http.OK;
+}
+
+var aCmd = $.request.parameters.get("cmd");
+switch (aCmd) {
+case "getSessionInfo":
+	fillSessionInfo();
+	break; 
+default:
+	$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
+	$.response.setBody("Invalid Request Method");
 }
 
 /**
@@ -17,17 +27,17 @@ function fillSessionInfo(){
 @returns {string} the same string as the input but now escaped
 */
 function escapeSpecialChars(input) {
-	if(typeof(input) != 'undefined' && input != null)
+	if(typeof input !== "undefined" && input !== null)
 	{
 	return input
-    .replace(/[\\]/g, '\\\\')
+    .replace(/[\\]/g, "\\\\")
     .replace(/[\"]/g, '\\\"')
-    .replace(/[\/]/g, '\\/')
-    .replace(/[\b]/g, '\\b')
-    .replace(/[\f]/g, '\\f')
-    .replace(/[\n]/g, '\\n')
-    .replace(/[\r]/g, '\\r')
-    .replace(/[\t]/g, '\\t'); }
+    .replace(/[\/]/g, "\\/")
+    .replace(/[\b]/g, "\\b")
+    .replace(/[\f]/g, "\\f")
+    .replace(/[\n]/g, "\\n")
+    .replace(/[\r]/g, "\\r")
+    .replace(/[\t]/g, "\\t"); }
 	else{
 
 		return "";
@@ -40,7 +50,7 @@ function escapeSpecialChars(input) {
 @returns {string} the same string as the input but now escaped
 */
 function escapeSpecialCharsText(input) {
-	if(typeof(input) != 'undefined' && input != null)
+	if(typeof input !== "undefined" && input !== null)
 	{
 	input.replace(/[\"]/g, '\"\"');
 	if(input.indexOf(",") >= 0 ||
@@ -66,11 +76,11 @@ function escapeSpecialCharsText(input) {
 @returns {String} The text string with the contents of the record set
 */
 function recordSetToText(rs,bHeaders,delimiter){
-	bHeaders = typeof bHeaders !== 'undefined' ? bHeaders : true;
-	delimiter = typeof delimiter !== 'undefined' ? delimiter : '\t'; //Default to Tab Delimited
+	bHeaders = typeof bHeaders !== "undefined" ? bHeaders : true;
+	delimiter = typeof delimiter !== "undefined" ? delimiter : "\t"; //Default to Tab Delimited
 
-	var outputString = '';
-	var value = '';
+	var outputString = "";
+	var value = "";
 	var meta = rs.getMetaData();
 	var colCount = meta.getColumnCount();
 
@@ -79,10 +89,10 @@ function recordSetToText(rs,bHeaders,delimiter){
 		for (var i=1; i<=colCount; i++) {
 			outputString += escapeSpecialCharsText(meta.getColumnLabel(i)) + delimiter;			
 		}
-		outputString += '\n';  //Add New Line
+		outputString += "\n";  //Add New Line
 	}
 	while (rs.next()) {
-		for (var i=1; i<=colCount; i++) {
+		for (i=1; i<=colCount; i++) {
 		     switch(meta.getColumnType(i)) {
 		     case $.db.types.VARCHAR:
 		     case $.db.types.CHAR:
@@ -134,9 +144,9 @@ function recordSetToText(rs,bHeaders,delimiter){
 		          value += rs.getString(i);
 		     }
 			   outputString += escapeSpecialCharsText(value) + delimiter;
-			   value = '';
+			   value = "";
 		     }
-			outputString += '\n';  //Add New Line
+			outputString += "\n";  //Add New Line
 		}
 
 
@@ -150,7 +160,7 @@ function recordSetToText(rs,bHeaders,delimiter){
 @returns {object} JSON representation of the record set data
 */
 function recordSetToJSON(rs,rsName){
-	rsName = typeof rsName !== 'undefined' ? rsName : 'entries';
+	rsName = typeof rsName !== "undefined" ? rsName : "entries";
 
 	var meta = rs.getMetaData();
 	var colCount = meta.getColumnCount();
