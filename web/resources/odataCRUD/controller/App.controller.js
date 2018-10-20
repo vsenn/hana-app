@@ -7,7 +7,7 @@ sap.ui.define([
 ], function(Controller, History, JSONModel) {
 	"use strict";
 
-	return Controller.extend("odataBasic.controller.App", {
+	return Controller.extend("odataCRUD.controller.App", {
 
 		onInit: function() {
 			this.getView().addStyleClass("sapUiSizeCompact"); // make everything inside this View appear in Compact mode

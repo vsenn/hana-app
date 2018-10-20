@@ -5,8 +5,8 @@
   	"_version": "1.4.0",
 	"type": "application",
 	"resources": "resources.json",
-  	"id": "odataBasic",
-  	"title": "Basic OData App",
+  	"id": "odataCRUD",
+  	"title": "CRUD OData App",
   	"description": "This is a SAPui5 application",
   	"applicationVersion": {
       "version": "${project.version}"
@@ -49,7 +49,7 @@
       "sapFiori2Adaptation": true
     },
     "rootView": {
-    	"viewName": "odataBasic.view.App",
+    	"viewName": "odataCRUD.view.App",
     	"type": "XML",
     	"id": "app"
     },

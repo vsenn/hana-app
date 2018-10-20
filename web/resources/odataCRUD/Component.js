@@ -6,7 +6,7 @@ sap.ui.define([
 ], function(UIComponent,JSONModel, Device) {
 	"use strict";
 
-	return UIComponent.extend("odataBasic.Component", {
+	return UIComponent.extend("odataCRUD.Component", {
 
 		metadata: {
 			manifest: "json"
