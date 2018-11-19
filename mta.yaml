@@ -19,6 +19,13 @@ modules:
     path: db
     requires:
       - name: hdi_db
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name}'
+      - name: CROSS_SCHEMA_PRODUCTS
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: ServiceName_1
+          service: '~{the-service-name}'
   - name: core_xsjs
     type: nodejs
     path: core_xsjs
@@ -47,3 +54,9 @@ resources:
     parameters:
       service: sapui5_sb
       service-plan: sapui5-1.52
+  - name: CROSS_SCHEMA_PRODUCTS
+    parameters:
+      service-name: CROSS_SCHEMA_PRODUCTS
+    properties:
+      the-service-name: '${service-name}'
+    type: org.cloudfoundry.existing-service
